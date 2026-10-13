@@ -32,7 +32,7 @@ export const letter = {
 
 // --- Step 3: Pesan apresiasi ---
 export const message = {
-  label: "untuk Bulan",
+  label: "for Wulan Purnamasari",
   paragraphs: [
     "Karya kecil ini aku buat khusus untukmu, sebagai bentuk apresiasi setinggi-tingginya atas semua usaha dan kerja kerasmu.",
     "Dari SPV Raja Brawijaya, Wakapel Teras Budaya, Humas Ospek Fakultas, Pengkaderan, sampai LK 1, kamu menjalani semua amanah dan tanggung jawab itu dengan sungguh-sungguh.",

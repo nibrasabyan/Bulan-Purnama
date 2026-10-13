@@ -5,6 +5,8 @@ import FlowerAnimation, { FloatingPetals } from "./components/FlowerAnimation.js
 import Message from "./components/Message.jsx";
 import Invitation from "./components/Invitation.jsx";
 import DatePicker from "./components/DatePicker.jsx";
+import ActivityPicker from "./components/ActivityPicker.jsx";
+import DressCodePicker from "./components/DressCodePicker.jsx";
 
 const STEP_TITLES = [
   "Surat pembuka",
@@ -53,6 +55,18 @@ export default function App() {
     setNote("");
   };
 
+  const toggleActivity = (label) =>
+    setActivities((list) =>
+      list.includes(label) ? list.filter((l) => l !== label) : [...list, label]
+    );
+
+  const commitCustomActivity = () => {
+    const idea = customActivity.trim();
+    if (!idea || activities.includes(idea)) return;
+    setActivities((list) => [...list, idea]);
+    setCustomActivity("");
+  };
+
   const state = {
     step,
     date,
@@ -84,6 +98,29 @@ export default function App() {
             onDate={setDate}
             onTime={setTime}
             onTimeLabel={setTimeLabel}
+            onNext={next}
+          />
+        );
+      case 5:
+        return (
+          <ActivityPicker
+            selected={activities}
+            custom={customActivity}
+            onToggle={toggleActivity}
+            onCustom={setCustomActivity}
+            onCommitCustom={commitCustomActivity}
+            onNext={next}
+          />
+        );
+      case 6:
+        return (
+          <DressCodePicker
+            dressCode={dressCode}
+            customDressCode={customDressCode}
+            note={note}
+            onDressCode={setDressCode}
+            onCustom={setCustomDressCode}
+            onNote={setNote}
             onNext={next}
           />
         );
