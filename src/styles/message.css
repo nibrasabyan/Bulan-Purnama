@@ -1,0 +1,36 @@
+/* Step 3 — Pesan apresiasi */
+
+.msg-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.msg-label {
+  font-size: 27px;
+  color: var(--primary);
+  transform: rotate(-2deg);
+  animation: fade-up 0.7s ease 0.1s both;
+}
+
+.msg-body {
+  text-align: left;
+  margin: 14px 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.msg-para {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+  opacity: 0;
+  animation: fade-up 0.9s ease both;
+}
+
+.msg-next {
+  align-self: center;
+  opacity: 0;
+  animation: fade-up 0.8s ease both;
+}

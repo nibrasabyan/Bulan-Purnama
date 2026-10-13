@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { people, theme } from "./config.js";
+import Envelope from "./components/Envelope.jsx";
+import FlowerAnimation, { FloatingPetals } from "./components/FlowerAnimation.jsx";
+import Message from "./components/Message.jsx";
 
 const STEP_TITLES = [
   "Surat pembuka",
@@ -60,19 +63,36 @@ export default function App() {
     note,
   };
 
+  const renderStep = () => {
+    switch (step) {
+      case 0:
+        return <Envelope onNext={next} />;
+      case 1:
+        return null;
+      case 2:
+        return <Message onNext={next} />;
+      default:
+        return (
+          <section className="card" data-testid={`step-panel-${step}`}>
+            <p className="kicker">
+              Step {step + 1} / {STEP_TITLES.length}
+            </p>
+            <h2 className="hand scaffold-title">{STEP_TITLES[step]}</h2>
+            <p className="scaffold-sub">
+              Layar untuk {people.sender.nick} → {people.receiver.nick} dibuat di
+              checkpoint berikutnya.
+            </p>
+          </section>
+        );
+    }
+  };
+
   return (
     <main className="app" data-testid="app-root">
+      {step === 1 && <FlowerAnimation onDone={next} />}
+      {step >= 2 && <FloatingPetals />}
       <div className="step-wrap" key={step}>
-        <section className="card" data-testid={`step-panel-${step}`}>
-          <p className="kicker">
-            Step {step + 1} / {STEP_TITLES.length}
-          </p>
-          <h2 className="hand scaffold-title">{STEP_TITLES[step]}</h2>
-          <p className="scaffold-sub">
-            Kerangka alur &amp; state sudah tersambung untuk {people.sender.nick} →{" "}
-            {people.receiver.nick}. Layar tiap step dibuat di checkpoint berikutnya.
-          </p>
-        </section>
+        {renderStep()}
       </div>
 
       <section className="scaffold-panel" data-testid="state-viewer">
