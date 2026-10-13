@@ -74,7 +74,6 @@ export default function Invitation({ onNext }) {
         <img src={foto} alt="Foto Nibras dan Bulan" data-testid="invitation-photo" />
       </div>
       <p className="hand inv-caption">{invitation.caption}</p>
-      <p className="hand inv-from">{invitation.from}</p>
 
       <div className="inv-actions">
         <span className="yes-wrap">

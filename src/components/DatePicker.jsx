@@ -67,7 +67,6 @@ export default function DatePicker({
 
   return (
     <section className="card when-card" data-testid="datepicker-step">
-      <p className="kicker">{when.label}</p>
       <h1 className="hand when-title">{when.title}</h1>
 
       <div className={`cal ${open ? "is-open" : ""}`} data-testid="calendar">

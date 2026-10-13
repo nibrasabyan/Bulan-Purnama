@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { people, theme } from "./config.js";
+import { theme } from "./config.js";
 import Envelope from "./components/Envelope.jsx";
 import FlowerAnimation, { FloatingPetals } from "./components/FlowerAnimation.jsx";
 import Message from "./components/Message.jsx";
@@ -7,17 +7,7 @@ import Invitation from "./components/Invitation.jsx";
 import DatePicker from "./components/DatePicker.jsx";
 import ActivityPicker from "./components/ActivityPicker.jsx";
 import DressCodePicker from "./components/DressCodePicker.jsx";
-
-const STEP_TITLES = [
-  "Surat pembuka",
-  "Animasi bunga",
-  "Pesan apresiasi",
-  "Ajakan",
-  "Kapan kamu free?",
-  "Rencana kita",
-  "Dress code-nya?",
-  "Tiket rangkuman",
-];
+import Ticket from "./components/Ticket.jsx";
 
 export default function App() {
   const [step, setStep] = useState(0);
@@ -40,8 +30,7 @@ export default function App() {
     theme.background.forEach((c, i) => s.setProperty(`--bg-${i + 1}`, c));
   }, []);
 
-  const goTo = (i) => setStep(((i % STEP_TITLES.length) + STEP_TITLES.length) % STEP_TITLES.length);
-  const next = () => goTo(step + 1);
+  const next = () => setStep((s) => (s + 1) % 8);
 
   const reset = () => {
     setStep(0);
@@ -65,18 +54,6 @@ export default function App() {
     if (!idea || activities.includes(idea)) return;
     setActivities((list) => [...list, idea]);
     setCustomActivity("");
-  };
-
-  const state = {
-    step,
-    date,
-    time,
-    timeLabel,
-    activities,
-    customActivity,
-    dressCode,
-    customDressCode,
-    note,
   };
 
   const renderStep = () => {
@@ -124,19 +101,21 @@ export default function App() {
             onNext={next}
           />
         );
-      default:
+      case 7:
         return (
-          <section className="card" data-testid={`step-panel-${step}`}>
-            <p className="kicker">
-              Step {step + 1} / {STEP_TITLES.length}
-            </p>
-            <h2 className="hand scaffold-title">{STEP_TITLES[step]}</h2>
-            <p className="scaffold-sub">
-              Layar untuk {people.sender.nick} → {people.receiver.nick} dibuat di
-              checkpoint berikutnya.
-            </p>
-          </section>
+          <Ticket
+            date={date}
+            time={time}
+            timeLabel={timeLabel}
+            activities={activities}
+            dressCode={dressCode}
+            customDressCode={customDressCode}
+            note={note}
+            onReset={reset}
+          />
         );
+      default:
+        return null;
     }
   };
 
@@ -147,21 +126,6 @@ export default function App() {
       <div className="step-wrap" key={step}>
         {renderStep()}
       </div>
-
-      {step >= 3 && (
-        <section className="scaffold-panel" data-testid="state-viewer">
-          <p className="kicker">State alur</p>
-          <pre className="scaffold-state">{JSON.stringify(state, null, 2)}</pre>
-          <div className="scaffold-actions">
-            <button className="btn btn-primary" data-testid="dev-next-step" onClick={next}>
-              Step +1
-            </button>
-            <button className="btn btn-ghost" data-testid="dev-reset" onClick={reset}>
-              Reset
-            </button>
-          </div>
-        </section>
-      )}
     </main>
   );
 }

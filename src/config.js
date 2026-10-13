@@ -44,7 +44,6 @@ export const message = {
 // --- Step 4: Ajakan ---
 export const invitation = {
   caption: "Would you like to go out with me?",
-  from: "dari Nibras",
   yesLabel: "Yes",
   noLabel: "No",
   noTexts: [
@@ -59,7 +58,6 @@ export const invitation = {
 
 // --- Step 5: Kapan free ---
 export const when = {
-  label: "buat Bulan",
   title: "Kapan kamu free?",
   nextLabel: "Lanjut",
 };
