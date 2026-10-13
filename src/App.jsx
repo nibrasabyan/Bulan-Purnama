@@ -3,6 +3,8 @@ import { people, theme } from "./config.js";
 import Envelope from "./components/Envelope.jsx";
 import FlowerAnimation, { FloatingPetals } from "./components/FlowerAnimation.jsx";
 import Message from "./components/Message.jsx";
+import Invitation from "./components/Invitation.jsx";
+import DatePicker from "./components/DatePicker.jsx";
 
 const STEP_TITLES = [
   "Surat pembuka",
@@ -71,6 +73,20 @@ export default function App() {
         return null;
       case 2:
         return <Message onNext={next} />;
+      case 3:
+        return <Invitation onNext={next} />;
+      case 4:
+        return (
+          <DatePicker
+            date={date}
+            time={time}
+            timeLabel={timeLabel}
+            onDate={setDate}
+            onTime={setTime}
+            onTimeLabel={setTimeLabel}
+            onNext={next}
+          />
+        );
       default:
         return (
           <section className="card" data-testid={`step-panel-${step}`}>
@@ -95,18 +111,20 @@ export default function App() {
         {renderStep()}
       </div>
 
-      <section className="scaffold-panel" data-testid="state-viewer">
-        <p className="kicker">State alur</p>
-        <pre className="scaffold-state">{JSON.stringify(state, null, 2)}</pre>
-        <div className="scaffold-actions">
-          <button className="btn btn-primary" data-testid="dev-next-step" onClick={next}>
-            Step +1
-          </button>
-          <button className="btn btn-ghost" data-testid="dev-reset" onClick={reset}>
-            Reset
-          </button>
-        </div>
-      </section>
+      {step >= 3 && (
+        <section className="scaffold-panel" data-testid="state-viewer">
+          <p className="kicker">State alur</p>
+          <pre className="scaffold-state">{JSON.stringify(state, null, 2)}</pre>
+          <div className="scaffold-actions">
+            <button className="btn btn-primary" data-testid="dev-next-step" onClick={next}>
+              Step +1
+            </button>
+            <button className="btn btn-ghost" data-testid="dev-reset" onClick={reset}>
+              Reset
+            </button>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

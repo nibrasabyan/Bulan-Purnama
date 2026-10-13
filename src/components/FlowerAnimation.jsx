@@ -21,27 +21,46 @@ function useReducedMotion() {
   return reduced;
 }
 
+/*
+ * Dinding bunga: grid ber-jitter yang menyesuaikan ukuran layar
+ * (±28 bunga di HP, ±54 di desktop) supaya selalu penuh satu layar.
+ * Mekar memancar dari tengah, lalu tertiup jatuh pelan per gelombang.
+ */
 export default function FlowerAnimation({ onDone }) {
   const reduced = useReducedMotion();
 
-  const flowers = useMemo(
-    () =>
-      Array.from({ length: 28 }, (_, i) => ({
-        Type: FLOWER_TYPES[i % 4],
-        x: 4 + Math.random() * 92,
-        y: 5 + Math.random() * 86,
-        s: 34 + Math.random() * 40,
-        r: Math.random() * 64 - 32,
-        d: i * 0.085,
-        fd: 2.9 + Math.random() * 0.7,
-        fy: 60 + Math.random() * 150,
-        fr: Math.random() * 120 - 60,
-      })),
-    []
-  );
+  const flowers = useMemo(() => {
+    const vw = Math.max(window.innerWidth, 320);
+    const vh = Math.max(window.innerHeight, 480);
+    const cell = Math.min(160, Math.max(104, vw / 3));
+    const cols = Math.ceil(vw / cell);
+    const rows = Math.ceil(vh / cell);
+    const list = [];
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const nx = (col + 0.5) / cols;
+        const ny = (row + 0.5) / rows;
+        const dist = Math.hypot(nx - 0.5, ny - 0.5) * 2; // 0 = tengah
+        list.push({
+          Type: FLOWER_TYPES[(row * cols + col + row * row) % 4],
+          x: ((col + 0.5 + (Math.random() - 0.5) * 0.85) / cols) * 100,
+          y: ((row + 0.5 + (Math.random() - 0.5) * 0.85) / rows) * 100,
+          s: cell * (1 + Math.random() * 0.8),
+          r: Math.random() * 70 - 35,
+          d: dist * 1.15 + Math.random() * 0.15,
+          fd: 2.4 + dist * 0.7 + Math.random() * 0.35,
+          fy: 55 + Math.random() * 130,
+          fx: Math.random() * 120 - 60,
+          fr: Math.random() * 100 - 50,
+        });
+      }
+    }
+    return list;
+  }, []);
 
   useEffect(() => {
-    const t = setTimeout(onDone, reduced ? 1800 : 5600);
+    const t = setTimeout(onDone, reduced ? 1800 : 6000);
     return () => clearTimeout(t);
   }, [onDone, reduced]);
 
@@ -60,10 +79,13 @@ export default function FlowerAnimation({ onDone }) {
             "--fd": `${f.fd}s`,
             "--r": `${f.r}deg`,
             "--fy": `${f.fy}px`,
+            "--fx": `${f.fx}px`,
             "--fr": `${f.fr}deg`,
           }}
         >
-          <Type />
+          <span className="bloom-sway">
+            <Type />
+          </span>
         </span>
       ))}
     </div>
