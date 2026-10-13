@@ -1,7 +1,6 @@
 import { formatIndoDate } from "./DatePicker.jsx";
 import { people, senderNote, ticket, times, whatsappNumber } from "../config.js";
 import { Sparkle } from "./Icons.jsx";
-import qrHeart from "../assets/qr-heart.svg";
 import "../styles/ticket.css";
 
 function Row({ icon, label, value, testid }) {
@@ -70,12 +69,6 @@ export default function Ticket({
         <div className="ticket-note">
           <p className="kicker">{ticket.labels.catatan}</p>
           <p className="hand ticket-note-text">{senderNote}</p>
-        </div>
-
-        <div className="ticket-qr" data-testid="ticket-qr">
-          <p className="kicker">ATAU BAGIKAN VIA QR</p>
-          <img src={qrHeart} alt="QR code undangan" width={168} height={168} data-testid="ticket-qr-image" />
-          <p className="ticket-qr-cap">Pindai untuk membuka undangan ini 📷</p>
         </div>
 
         <p className="hand ticket-footer">{ticket.footer}</p>
