@@ -13,3 +13,19 @@ export const Heart = ({ className = "", size = 24, color = "var(--primary)" }) =
     />
   </svg>
 );
+
+export const Sparkle = ({ className = "", size = 24, color = "var(--primary)" }) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path
+      d="M12 2c.9 5.2 4.8 9.1 10 10-5.2.9-9.1 4.8-10 10-.9-5.2-4.8-9.1-10-10 5.2-.9 9.1-4.8 10-10z"
+      fill={color}
+    />
+  </svg>
+);

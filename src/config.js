@@ -11,8 +11,7 @@ export const people = {
 };
 
 // --- Nomor WhatsApp Nibras (format internasional, tanpa "+") ---
-// GANTI dengan nomor asli, contoh: "6281234567890"
-export const whatsappNumber = "6281234567890";
+export const whatsappNumber = "628224310426";
 
 // --- Tema warna (disinkronkan ke CSS variables oleh App) ---
 export const theme = {
@@ -36,7 +35,7 @@ export const message = {
   paragraphs: [
     "Karya kecil ini aku buat khusus untukmu, sebagai bentuk apresiasi setinggi-tingginya atas semua usaha dan kerja kerasmu.",
     "Dari SPV Raja Brawijaya, Wakapel Teras Budaya, Humas Ospek Fakultas, Pengkaderan, sampai LK 1, kamu menjalani semua amanah dan tanggung jawab itu dengan sungguh-sungguh.",
-    "Aku ingin mengajakmu berhenti sejenak, dan mengapresiasi dirimu sendiri atas setiap proses yang sudah kamu lewati. Kamu sudah melakukan banyak hal hebat, dan kamu layak merayakannya. 🤍",
+    "Aku ingin mengajakmu berhenti sejenak, dan mengapresiasi dirimu sendiri atas setiap proses yang sudah kamu lewati. Kamu sudah melakukan banyak hal hebat, dan kamu layak merayakannya. ✨",
   ],
   nextLabel: "Lanjut",
 };
@@ -84,11 +83,9 @@ export const activities = [
   { id: "nonton", emoji: "🎬", label: "Nonton bioskop" },
   { id: "ngopi", emoji: "☕", label: "Ngopi" },
   { id: "jalan", emoji: "🌳", label: "Jalan-jalan" },
-  { id: "dessert", emoji: "🍰", label: "Dessert" },
   { id: "karaoke", emoji: "🎤", label: "Karaoke" },
   { id: "photobooth", emoji: "📸", label: "Photobooth" },
-  { id: "belanja", emoji: "🛍️", label: "Belanja" },
-  { id: "terserah", emoji: "🤍", label: "Terserah kamu aja" },
+  { id: "terserah", emoji: "✨", label: "Terserah kamu aja" },
 ];
 
 // --- Step 7: Dress code ---
@@ -112,22 +109,22 @@ export const dressCodeOptions = [
 // --- Step 8: Tiket ---
 export const ticket = {
   kicker: "SIMPAN TIKETMU DI BAWAH",
-  title: "Yeay, it's a date!",
+  title: "Yeay, let's hang out!",
   admit: "ADMIT TWO",
-  name: "Date Invitation",
+  name: "Hangout Invitation",
   labels: {
-    untuk: "UNTUK",
+    untuk: "FOR",
     kapan: "KAPAN",
     acara: "ACARA",
     dressCode: "DRESS CODE",
     notes: "NOTES DARI BULAN",
     catatan: "CATATAN DARI NIBRAS",
   },
-  footer: "Would you like to go out with me?",
+  footer: "Would you like to hang out with me?",
   waButton: "Kirim ke Nibras via WhatsApp",
   resetButton: "Ulangi dari awal",
   hint: "Screenshot tiketmu ya 📸",
 };
 
 // --- Catatan dari Nibras (muncul di tiket — ganti sendiri ya) ---
-export const senderNote = "Sampai ketemu ya! 🤍";
+export const senderNote = "Sampai ketemu ya! ✨";

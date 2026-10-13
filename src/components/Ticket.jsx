@@ -1,6 +1,6 @@
 import { formatIndoDate } from "./DatePicker.jsx";
 import { people, senderNote, ticket, times, whatsappNumber } from "../config.js";
-import { Heart } from "./Icons.jsx";
+import { Sparkle } from "./Icons.jsx";
 import "../styles/ticket.css";
 
 function Row({ icon, label, value, testid }) {
@@ -35,12 +35,12 @@ export default function Ticket({
   const dress = customDressCode.trim() || dressCode || "-";
   const notes = note.trim() || "-";
 
-  const waText = `Hai ${people.sender.nick}! Aku mau jalan sama kamu 🥰\n📅 Kapan: ${kapan}\n🎯 Acara: ${acara}\n👗 Dress code: ${dress}\n📝 Notes: ${notes}`;
+  const waText = `Hai ${people.sender.nick}! Aku mau jalan sama kamu 😊\n📅 Kapan: ${kapan}\n🎯 Acara: ${acara}\n👗 Dress code: ${dress}\n📝 Notes: ${notes}`;
   const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waText)}`;
 
   return (
     <section className="ticket-screen" data-testid="ticket-step">
-      <Heart size={30} color="#e0475e" className="ticket-heart" />
+      <Sparkle size={30} color="#f0b34a" className="ticket-heart" />
       <h1 className="hand ticket-title">{ticket.title}</h1>
       <p className="kicker ticket-kicker">{ticket.kicker}</p>
 
@@ -51,12 +51,12 @@ export default function Ticket({
             <p className="hand ticket-name">{ticket.name}</p>
           </div>
           <span className="ticket-stamp" aria-hidden="true">
-            <Heart size={26} color="#e0475e" />
+            <Sparkle size={26} color="var(--primary)" />
           </span>
         </div>
 
         <div className="ticket-rows">
-          <Row icon="💌" label={ticket.labels.untuk} value={people.receiver.nick} testid="ticket-unto" />
+          <Row icon="🌟" label={ticket.labels.untuk} value={people.receiver.full} testid="ticket-unto" />
           <Row icon="📅" label={ticket.labels.kapan} value={kapan} testid="ticket-when" />
           <Row icon="🎯" label={ticket.labels.acara} value={acara} testid="ticket-plan" />
           <Row icon="👗" label={ticket.labels.dressCode} value={dress} testid="ticket-dress" />

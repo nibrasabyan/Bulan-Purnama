@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { theme } from "./config.js";
+import Ambient from "./components/Ambient.jsx";
 import Envelope from "./components/Envelope.jsx";
 import FlowerAnimation, { FloatingPetals } from "./components/FlowerAnimation.jsx";
 import Message from "./components/Message.jsx";
@@ -121,6 +122,7 @@ export default function App() {
 
   return (
     <main className="app" data-testid="app-root">
+      <Ambient />
       {step === 1 && <FlowerAnimation onDone={next} />}
       {step >= 2 && <FloatingPetals />}
       <div className="step-wrap" key={step}>

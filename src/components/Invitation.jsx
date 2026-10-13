@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { invitation } from "../config.js";
-import { Heart } from "./Icons.jsx";
+import { Sparkle } from "./Icons.jsx";
 import { Petal } from "./Flowers.jsx";
 import foto from "../assets/foto.jpg";
 import "../styles/invitation.css";
@@ -63,7 +63,7 @@ export default function Invitation({ onNext }) {
           rot: Math.random() * 260 - 130,
           delay: Math.random() * 0.12,
           size: 10 + Math.random() * 12,
-          heart: i % 3 === 0,
+          sparkle: i % 3 === 0,
         };
       })
     : [];
@@ -91,8 +91,8 @@ export default function Invitation({ onNext }) {
                   "--cd": `${c.delay}s`,
                 }}
               >
-                {c.heart ? (
-                  <Heart size={c.size} color="#e0475e" />
+                {c.sparkle ? (
+                  <Sparkle size={c.size} color={["#f0b34a", "#d9566f"][c.id % 2]} />
                 ) : (
                   <Petal color={["#f6b8c6", "#ffd95e", "#a5bef6", "#fffef9"][c.id % 4]} />
                 )}

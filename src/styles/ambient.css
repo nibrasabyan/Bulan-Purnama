@@ -1,0 +1,102 @@
+/* Dekorasi latar: blob lembut + kerlip + ranting bunga di sudut */
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-blob {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.blob-1 {
+  width: 56vmax;
+  height: 56vmax;
+  left: -20vmax;
+  top: -16vmax;
+  background: radial-gradient(circle, rgba(247, 200, 208, 0.5), rgba(247, 200, 208, 0) 70%);
+}
+
+.blob-2 {
+  width: 50vmax;
+  height: 50vmax;
+  right: -18vmax;
+  bottom: -14vmax;
+  background: radial-gradient(circle, rgba(232, 245, 239, 0.85), rgba(232, 245, 239, 0) 70%);
+}
+
+.blob-3 {
+  width: 30vmax;
+  height: 30vmax;
+  right: 4vmax;
+  top: 2vmax;
+  background: radial-gradient(circle, rgba(242, 184, 198, 0.38), rgba(242, 184, 198, 0) 70%);
+}
+
+.ambient-sparkle {
+  position: absolute;
+  opacity: 0.5;
+  animation: twinkle var(--dur) ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    transform: scale(0.55) rotate(0deg);
+    opacity: 0.22;
+  }
+  to {
+    transform: scale(1.1) rotate(24deg);
+    opacity: 0.8;
+  }
+}
+
+.ambient-sprig {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  opacity: 0.7;
+}
+
+.sprig-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sprig-tl {
+  left: 6px;
+  top: 6px;
+  transform-origin: bottom left;
+  animation: sprig-sway 5.5s ease-in-out infinite alternate;
+}
+
+.sprig-br {
+  right: 6px;
+  bottom: 6px;
+  transform-origin: bottom right;
+  animation: sprig-sway 6.5s ease-in-out 0.8s infinite alternate;
+}
+
+.sprig-br .sprig-svg {
+  transform: scaleX(-1);
+}
+
+@keyframes sprig-sway {
+  from {
+    transform: rotate(-1.6deg);
+  }
+  to {
+    transform: rotate(2.2deg);
+  }
+}
+
+@media (min-width: 900px) {
+  .ambient-sprig {
+    width: 180px;
+    height: 180px;
+  }
+}
