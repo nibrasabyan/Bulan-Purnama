@@ -36,7 +36,10 @@ export default function Ticket({
   const notes = note.trim() || "-";
 
   const waText = `Hai ${people.sender.nick}! Aku mau jalan sama kamu 😊\n📅 Kapan: ${kapan}\n🎯 Acara: ${acara}\n👗 Dress code: ${dress}\n📝 Notes: ${notes}`;
-  const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waText)}`;
+  // Pakai api.whatsapp.com langsung: redirect wa.me merusak emoji jadi "�"
+  const waLink = `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(
+    waText
+  )}&type=phone_number&app_absent=0`;
 
   return (
     <section className="ticket-screen" data-testid="ticket-step">

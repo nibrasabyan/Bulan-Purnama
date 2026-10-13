@@ -60,6 +60,9 @@
   background: #fff;
   color: var(--ink-soft);
   border: 1.5px solid var(--line);
+  white-space: nowrap;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* setelah kabur pertama, tombol No jadi fixed dan meluncur antar posisi */

@@ -106,7 +106,9 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  animation: step-in 0.5s ease both;
+  /* backwards (bukan both): setelah animasi selesai tidak tersisa transform,
+     supaya elemen position:fixed di dalamnya (tombol No) tetap relatif ke viewport */
+  animation: step-in 0.5s ease backwards;
 }
 
 @keyframes step-in {
