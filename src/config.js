@@ -11,7 +11,7 @@ export const people = {
 };
 
 // --- Nomor WhatsApp Nibras (format internasional, tanpa "+") ---
-export const whatsappNumber = "628224310426";
+export const whatsappNumber = "6282224310426";
 
 // --- Tema warna (disinkronkan ke CSS variables oleh App) ---
 export const theme = {
